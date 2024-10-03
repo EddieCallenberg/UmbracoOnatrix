@@ -1,0 +1,35 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@{
+	Layout = null;
+    var pageTitle = !string.IsNullOrEmpty(ViewBag.Title) ? $"{ViewBag.Title} | Onatrix - Financial Solutions for Your Business" : "Onatrix - Financial Solutions for Your Business";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://kit.fontawesome.com/a576612222.css" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="@Url.Content("~/css/theme.css")">
+    <title>@pageTitle</title>
+</head>
+<body>
+    <div class="wrapper">
+        
+        @await Html.PartialAsync("partials/static/topbar.cshtml")
+        @await Html.PartialAsync("partials/static/header.cshtml")
+        
+        <main>
+          	@RenderBody() 
+        </main>
+
+        @await Html.PartialAsync("partials/static/footer.cshtml")
+    </div>
+    <script src="/scripts/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

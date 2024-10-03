@@ -1,0 +1,36 @@
+﻿.bg-primary {
+  background-color: #4F5955;
+}
+
+.bg-gray {
+  background-color: #D9C3A9;
+}
+
+.btn-primary {
+  background-color: #4F5955 !important;
+}
+
+.bg-primary {
+  background-color: #4F5955;
+}
+
+.bg-gray {
+  background-color: #F7F7F7;
+}
+
+.bg-dark {
+  background-color: black;
+}
+
+.btn-primary {
+  background-color: #4F5955 !important;
+  color: #D9C3A9;
+}
+
+.accent {
+  color: #D9C3A9;
+}
+
+.light {
+  color: #FFFFFF;
+}

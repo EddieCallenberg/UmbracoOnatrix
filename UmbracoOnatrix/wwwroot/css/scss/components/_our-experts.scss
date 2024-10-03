@@ -1,0 +1,43 @@
+#our-experts {
+    .container {
+        h2, h6 {
+            max-width: 501px;
+            text-align: center;
+            margin: auto;
+        }
+        h2 {
+            margin-bottom: 1rem;
+        }
+
+        .image-slider {
+            .slides {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 1.5rem;
+
+                .slide-item {
+                    flex: 0 0 calc(33.33% - 10px);
+                    box-sizing: border-box;
+
+                    &:nth-child(n+4) {
+                        flex: 0 0 calc(25% - 10px);
+                    }
+                }
+
+                .slider-item {
+                    border: 1px solid #EAEAEA;
+
+                    p {
+                        padding: 1rem;
+                        margin-top: -20px;
+                    }
+
+                    h5 {
+                        padding: 1rem;
+                        margin: 0;
+                    }
+                }
+            }
+        }
+    }
+}

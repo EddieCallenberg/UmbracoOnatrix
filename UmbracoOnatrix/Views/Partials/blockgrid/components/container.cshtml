@@ -1,0 +1,9 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+    var spaceBetween = (Model!.Content.Value<bool>("spaceBetween")) ? "space-between" : "";
+}
+<div class="container @spaceBetween">
+    @await Html.GetBlockGridItemAreasHtmlAsync(Model)
+</div>

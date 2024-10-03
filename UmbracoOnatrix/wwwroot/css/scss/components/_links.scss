@@ -1,0 +1,16 @@
+a {
+    display: inline-block;
+    @include text;
+    font-size: 1em;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+
+}
+
+
+.active {
+    color: #D9C3A9 !important;
+}

@@ -1,0 +1,44 @@
+$theme-color: #4F5955;
+$theme-secondary-color: #D9C3A9;
+$theme-third-color: #F2EDDC;
+$body-text-color: #535656;
+$form-text-color: #9C9EA6;
+$main-background-color: #FFFFFF;
+$secondary-background-color: #F7F7F7;
+
+.bg-primary {
+    background-color: $theme-color;
+}
+
+.bg-gray {
+    background-color: $theme-secondary-color
+}
+
+.btn-primary {
+    background-color: $theme-color !important;
+}
+
+.bg-primary {
+    background-color: $theme-color;
+}
+
+.bg-gray {
+    background-color: $secondary-background-color;
+}
+
+.bg-dark {
+    background-color: black;
+}
+
+.btn-primary {
+    background-color: $theme-color !important;
+    color: $theme-secondary-color;
+}
+
+.accent {
+    color: $theme-secondary-color;
+}
+
+.light {
+    color: $main-background-color;
+}

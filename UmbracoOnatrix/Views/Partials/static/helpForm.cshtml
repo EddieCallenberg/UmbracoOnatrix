@@ -1,0 +1,14 @@
+﻿@inject Umbraco.Cms.Web.Common.UmbracoHelper UmbracoHelper;
+@{
+    var rootContents = UmbracoHelper.ContentAtRoot();
+	var settings = rootContents?.FirstOrDefault(x => x.ContentType.Alias == "settingsPage") ?? null;
+	var helpFormBg = settings?.Value<IPublishedContent>("helpFormBg")?.Url() ?? "";
+}
+<div class="help-form" style="background-image: Url('@helpFormBg')">
+	<h5>How can we help you?</h5>
+	<p>online support 24/7, we are here to help you</p>
+	<div class="input">
+		<input type="email" placeholder="E-mail address">
+		<i class="fa-thin fa-envelope"></i>
+	</div>
+</div>

@@ -1,0 +1,49 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Cms.Core.PropertyEditors.ValueConverters;
+@{
+    var sectionTitle = Model?.Content.Value<string>("sectionTitle") ?? "";
+    var sectionId = sectionTitle?.ToString().ToLower().Trim().Replace(" ", "-");
+
+    var spacingTopClass = (Model!.Content.Value<bool>("addSpaceToTop")) ? "spacing-top" : "";
+    var spacingBottomClass = (Model.Content.Value<bool>("addSpaceToBottom")) ? "spacing-bottom" : "";
+    var centerContentClass = (Model.Content.Value<bool>("centerContentOnPage")) ? "center" : "";
+
+    var sectionBackgroundColorLabel = Model?.Content?.Value<ColorPickerValueConverter.PickedColor>("sectionBackgroundColor")?.Label.ToLower() ?? null;
+    var backgroundColorClass = (!string.IsNullOrEmpty(sectionBackgroundColorLabel) && sectionBackgroundColorLabel != "none") ? $"bg-{sectionBackgroundColorLabel}" : "";
+    
+    var sectionBackgroundImage = Model?.Content.Value<IPublishedContent>("sectionBackgroundImage")?.Url() ?? null;
+    string media = "inget";
+}
+
+
+<section id="@sectionId" class="@spacingTopClass @spacingBottomClass background @backgroundColorClass" style="background-image: url(@sectionBackgroundImage); background-position: right; background-repeat: no-repeat;">
+    <div class="container @centerContentClass">
+    @if (!string.IsNullOrEmpty(backgroundColorClass))
+    {
+        <div class="background @backgroundColorClass"></div>
+    }
+
+    @await Html.GetBlockGridItemAreasHtmlAsync(Model)
+</section>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var section = document.getElementById('@sectionId');
+
+        function checkScreenWidth() {
+            var screenWidth = window.innerWidth;
+            console.log("Current screen width: " + screenWidth); // Loggar bredden för att felsöka
+
+            if (screenWidth < 1400) {
+                section.style.backgroundImage = "none";  // Tar bort bakgrundsbilden
+            } else {
+                section.style.backgroundImage = "url('@sectionBackgroundImage')";  // Lägg tillbaka bakgrundsbilden
+            }
+        }
+
+        // Kör funktionen direkt och varje gång fönstret ändras
+        checkScreenWidth(); // Vid laddning
+        window.addEventListener('resize', checkScreenWidth); // Vid omstorlek
+    });
+</script>

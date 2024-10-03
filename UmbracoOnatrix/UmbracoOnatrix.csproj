@@ -4,6 +4,24 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
+  <ItemGroup>
+    <Content Remove="compilerconfig.json" />
+    <Content Remove="wwwroot\css\scss\colors\_theme.scss" />
+    <Content Remove="wwwroot\css\scss\components\_buttons.scss" />
+    <Content Remove="wwwroot\css\scss\mixins\_mixins-media.scss" />
+  </ItemGroup>
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="compilerconfig.json" />
+    <_ContentIncludedByDefault Remove="wwwroot\css\scss\colors\_theme.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\css\scss\components\_buttons.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\css\scss\mixins\_mixins-media.scss" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="compilerconfig.json" />
+    <None Include="wwwroot\css\scss\colors\_theme.scss" />
+    <None Include="wwwroot\css\scss\components\_buttons.scss" />
+    <None Include="wwwroot\css\scss\mixins\_mixins-media.scss" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Umbraco.Cms" Version="14.2.0" />
@@ -12,6 +30,7 @@
   <ItemGroup>
     <!-- Opt-in to app-local ICU to ensure consistent globalization APIs across different platforms -->
     <PackageReference Include="Microsoft.ICU.ICU4C.Runtime" Version="72.1.0.3" />
+    <PackageReference Include="uSync" Version="14.2.2" />
     <RuntimeHostConfigurationOption Include="System.Globalization.AppLocalIcu" Value="72.1.0.3" Condition="$(RuntimeIdentifier.StartsWith('linux')) or $(RuntimeIdentifier.StartsWith('win')) or ('$(RuntimeIdentifier)' == '' and !$([MSBuild]::IsOSPlatform('osx')))" />
   </ItemGroup>
 

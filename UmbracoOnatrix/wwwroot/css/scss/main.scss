@@ -1,0 +1,285 @@
+@import "./mixins/mixins";
+
+@import "./misce/base";
+@import "./colors/theme";
+@import "./components/wrapper";
+@import "./components/container";
+@import "./components/links";
+@import "./components/buttons";
+@import "./components/headings";
+@import "./components/typography";
+@import "./components/header";
+@import "./components/breadcrumb";
+@import "./components/services";
+@import "./components/forms";
+@import "./components/projects";
+@import "./components/contact";
+@import "./components/our-experts";
+@import "./components/home-form";
+
+
+
+.background {
+    width: 100%;
+}
+.background-image {
+    /*position: absolute;*/
+
+    @media (min-width: 1200px) {
+        right: 0;
+    }
+}
+
+.spacing-top {
+    padding-top: 5rem;
+}
+
+.spacing-bottom {
+    padding-bottom: 5rem;
+}
+
+.block-quote {
+    font-size: 20px;
+    font-weight: 200;
+}
+
+.space-between {
+    display: flex;
+    justify-content: space-between;
+}
+
+#topbar {
+    display: flex;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    color: $main-background-color;
+}
+
+.center {
+    text-align: center;
+}
+
+.socialmedia {
+    display: flex;
+    gap: 0.7rem;
+    height: 1.1rem;
+    a {
+        margin: 0;
+        padding-left: 1rem;
+        text-decoration: none !important;
+        color: inherit;
+        transition: 0.25s;
+
+        &:hover {
+            color: $theme-secondary-color;
+            transition: 0.25s;
+            font-size: 1.1rem;
+        }
+        ::after {
+            content: none;
+            font-family: 'poppins', sans-serif;
+        }
+    }
+}
+
+.image-slider {
+    width: 100%;
+
+    .slides {
+        @include tablet {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 2rem;
+        }
+        @include desktop {
+            display: flex;
+            justify-content: space-between;
+        }
+
+
+        .slide-item {
+        }
+    }
+}
+
+.success-numbers {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-bottom: 20px;
+
+    @include tablet {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .big-numbers {
+        font-size: 100px;
+        font-weight: 600;
+        margin-bottom: -20px;
+        margin-top: -10px;
+    }
+}
+
+#services-section {
+    
+    @include tablet{
+        display: block;
+    }
+}
+
+#topbar {
+    display: none;
+    @include tablet {
+        display: block;
+    }
+}
+.let-us-know {
+    .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+        .luk-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            .luk-item {
+                padding-top: 1rem;
+                span {
+                    font-weight: 500;
+                    i {
+                        font-size: 1rem;
+                        padding-right: .9rem;
+                        color: $theme-secondary-color;
+                    }
+                }
+
+                p {
+                    padding-left: 1.8rem;
+                }
+            }
+        }
+    }
+}
+
+form {
+    .form-input-group {
+        .form-input-error {
+            display: none;
+            color: red;
+        }
+        .form-invalid-input {
+            display: block !important;
+        }
+    }
+}
+
+#trusted, #success-stories {
+    img {
+        display: none;
+
+        @include desktop {
+            display: block;
+        }
+    }
+}
+
+.help-form {
+    background-color: #4F5955;
+    color: #F2EDDC;
+    max-width: 307px;
+    height: 220px;
+    padding: 1.5rem;
+
+    p {
+        color: #FFFFFF;
+    }
+
+    .input {
+        position: relative;
+        display: flex;
+        input {
+            padding: 1rem;
+            width: 100%;
+            z-index: 1;
+        }
+        i {
+            position: absolute;
+            z-index: 100;
+            color: black;
+            right: 1.1rem;
+            top: 1.06rem;
+            font-size: 1.2rem;
+        }
+    }
+}
+#question {
+    padding-bottom: 2rem;
+    input {
+        padding: 1rem;
+    }
+    .name-email {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+    textarea {
+        margin-top: 1rem;
+        resize: none;
+        width: 100%;
+        height: 75px;
+        padding: 1rem;
+    }
+    button {
+        margin-top: .7rem;
+        padding: .7rem 1.5rem;
+        border-radius: 5px;
+    }
+}
+
+.umb-block-grid__layout-container {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(var(--umb-block-grid--grid-columns, 1), minmax(0, 1fr));
+    grid-auto-flow: row;
+    grid-auto-rows: minmax(0px, min-content);
+    column-gap: var(--umb-block-grid--column-gap, 0);
+    row-gap: var(--umb-block-grid--row-gap, 0);
+}
+
+.umb-block-grid__layout-item {
+    position: relative;
+    /* For small devices we scale columnSpan by three, to make everything bigger than 1/3 take full width: */
+    grid-column-end: span min(calc(var(--umb-block-grid--item-column-span, 1) * 3), var(--umb-block-grid--grid-columns));
+    grid-row: span var(--umb-block-grid--item-row-span, 1);
+}
+
+.umb-block-grid__area-container,
+.umb-block-grid__block--view::part(area-container) {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat( var(--umb-block-grid--area-grid-columns, var(--umb-block-grid--grid-columns, 1)), minmax(0, 1fr) );
+    grid-auto-flow: row;
+    grid-auto-rows: minmax(0px, min-content);
+    column-gap: var(--umb-block-grid--areas-column-gap, 0);
+    row-gap: var(--umb-block-grid--areas-row-gap, 0);
+}
+
+.umb-block-grid__area {
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    /* For small devices we scale columnSpan by three, to make everything bigger than 1/3 take full width: */
+    grid-column-end: span min(calc(var(--umb-block-grid--area-column-span, 1) * 3), var(--umb-block-grid--area-grid-columns));
+    grid-row: span var(--umb-block-grid--area-row-span, 1);
+}
+
+@media (min-width: 1024px) {
+    .umb-block-grid__layout-item {
+        grid-column-end: span min(var(--umb-block-grid--item-column-span, 1), var(--umb-block-grid--grid-columns));
+    }
+
+    .umb-block-grid__area {
+        grid-column-end: span min(var(--umb-block-grid--area-column-span, 1), var(--umb-block-grid--area-grid-columns));
+    }
+}

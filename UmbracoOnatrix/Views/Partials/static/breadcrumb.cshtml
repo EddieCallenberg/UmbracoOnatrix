@@ -1,0 +1,37 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@inject Umbraco.Cms.Web.Common.UmbracoHelper UmbracoHelper;
+@using Umbraco.Cms.Core.Models.PublishedContent
+@using Umbraco.Cms.Core.Routing
+@using Umbraco.Extensions
+
+@inject IPublishedUrlProvider PublishedUrlProvider
+
+@{
+    var rootContents = UmbracoHelper.ContentAtRoot();
+    var settings = rootContents?.FirstOrDefault(x => x.ContentType.Alias == "settingsPage") ?? null;
+    
+    var breadcrumbBg = settings?.Value<IPublishedContent>("breadcrumbBackgroundImage")?.Url() ?? "";
+    var selection = Model.Ancestors().ToArray();
+    var homePageDisplayName = "Home";
+    var isFirstItem = true;
+}
+
+<section id="breadcrumb-section" class="page-title bg-gray" style="background-image: url(@breadcrumbBg); background-position: center; background-repeat: no-repeat;>
+    <div class="container">
+        <h1>@ViewBag.Title</h1>
+
+        @if (selection?.Length > 0)
+        {
+        <ul class="breadcrumb">
+            @foreach (var item in selection.OrderBy(x => x.Level))
+            {
+                var displayName = isFirstItem ? homePageDisplayName : item.Name;
+                <li><a href="@item.Url(PublishedUrlProvider)">@displayName</a></li>
+                isFirstItem = false;
+            }
+
+            <li class="active no-arrow">@Model.Name</li>
+        </ul>
+        }
+    </div>
+</section>

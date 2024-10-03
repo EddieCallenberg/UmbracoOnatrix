@@ -1,0 +1,67 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage;
+@inject Umbraco.Cms.Web.Common.UmbracoHelper UmbracoHelper;
+@using Umbraco.Cms.Core.Models.PublishedContent;
+@{
+	Layout = "mainLayout.cshtml";
+	ViewBag.Title = Model?.Value("pageTitle") ?? null;
+	var rootContents = UmbracoHelper.ContentAtRoot();
+    var settings = rootContents?.FirstOrDefault(x => x.ContentType.Alias == "settingsPage") ?? null;
+    
+    var aboutUsImage = settings?.Value<IPublishedContent>("aboutUsImage")?.Url() ?? "";
+	var letUsKnowImage = settings?.Value<IPublishedContent>("letUsKnowImage")?.Url() ?? "";
+}
+@if (!string.IsNullOrEmpty(ViewBag.Title))
+{
+	@await Html.PartialAsync("partials/static/breadcrumb.cshtml")
+}
+<section id="specific-service">
+	<div class="container spacing-top spacing-bottom">
+        <div>
+            <div class="about-us-container">
+                <h5>About Us</h5>
+                <img src="@aboutUsImage" alt="Poeple in office">
+                <p>Dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non </p>
+            </div>
+            @await Html.PartialAsync("partials/static/helpForm.cshtml")
+        </div>
+		<div class="service-item-container">
+			@Model.Value("pageContent")
+		</div>
+	</div>
+</section>
+<section id="question">
+    <div class="container">
+        <h4>Have a question?</h4>
+        <form>
+            <div class="name-email">
+            <input type="text" placeholder="Name" />
+            <input type="email" placeholder="Email" />
+            </div>
+            <div>
+            <textarea placeholder="Question..."></textarea>
+            </div>
+            <button type="submit" class="bg-primary accent">Submit</button>
+        </form>
+    </div>
+</section>
+<section class="let-us-know bg-gray">
+    <div class="container">
+        <img src="@letUsKnowImage" alt="Picture of man">
+        <div class="luk-content">
+            <h2>Let us know about your next project</h2>
+            <div class="luk-item">
+                <span><i class="fa-light fa-location-dot"></i>Office Location</span>
+                <p>Klarabergsviadukten 90, 111 52 Stockholm</p>
+            </div>
+            <div class="luk-item">
+                <span><i class="fa-light fa-phone-flip"></i>Phone number</span>
+                <p>+46 8 123 456 75</p>
+            </div>
+            <div class="luk-item">
+                <span><i class="fa-light fa-envelope"></i>Phone number</span>
+                <p>sales@onatrix.com</p>
+            </div>
+        </div>
+    </div>
+</section>

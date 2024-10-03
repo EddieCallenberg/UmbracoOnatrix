@@ -1,0 +1,13 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Cms.Core.PropertyEditors.ValueConverters;
+@{
+    var headline2Content = Model?.Content.Value<string>("headline2Content");
+    var headingColor = Model?.Content.Value<ColorPickerValueConverter.PickedColor>("headingColor")?.Label.ToLower() ?? null;
+}
+
+@if (!string.IsNullOrEmpty(headline2Content))
+{
+    <h2 class="@headingColor">@headline2Content</h2>
+}

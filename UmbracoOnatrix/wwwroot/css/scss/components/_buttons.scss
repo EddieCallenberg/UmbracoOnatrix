@@ -1,0 +1,10 @@
+.btn-dark, .btn-primary, .btn-secondary, .btn-light, .btn-gray, .btn-accent {
+    @include btn;
+}
+
+.btn-menu {
+    @include btn-circle;
+    height: 55px;
+    width: 55px;
+    font-size: 1.6rem;
+}
